@@ -1,0 +1,2 @@
+127.0.0.1       site.a.net
+127.0.1.1       site.b.net

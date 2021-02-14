@@ -11,23 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 public class CspResponseInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(
-            HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         return true;
     }
 
     @Override
-    public void postHandle(
-            HttpServletRequest request, HttpServletResponse response, Object handler,
-            ModelAndView modelAndView) throws Exception {
-
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         response.addHeader("Content-Security-Policy-Report-Only", "script-src 'none'; report-uri /csp-report/");
 
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
-                                Object handler, Exception exception) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception exception) throws Exception {
     }
 }
