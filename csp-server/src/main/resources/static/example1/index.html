@@ -1,14 +1,37 @@
 <html>
 <head>
-<!--    <meta http-equiv="Content-Security-Policy" content="script-src 'none';">-->
+	<!--    <meta http-equiv="Content-Security-Policy" content="script-src 'none';">-->
 
-    <!--    Deprecated -->
-    <!--    <meta http-equiv="Content-Security-Policy-Report-Only" content="script-src 'none';">-->
+	<!--    Deprecated -->
+	<!--    <meta http-equiv="Content-Security-Policy-Report-Only" content="script-src 'none';">-->
 
-    <script src="/js/script1.js" type="application/javascript"></script>
-    <title>Example 1</title>
+	<script src="/example1/js/script1.js" type="application/javascript"></script>
+	<title>Example 1</title>
+
+	<style>
+		div {
+			border: solid 4px lime;
+			margin: 10px;
+		}
+	</style>
 </head>
 <body>
 <h1>Example 1</h1>
+<div id="element1">
+	element 1
+</div>
+<div id="element2">
+	element 2
+</div>
+
+
+<script>
+	// document.onload = function () {
+		let e = document.getElementById('element2')
+		console.log(e)
+		e.innerHTML = e.innerHTML + ' - was hacked'
+		e.style.borderColor = 'red'
+	// }
+</script>
 </body>
 </html>

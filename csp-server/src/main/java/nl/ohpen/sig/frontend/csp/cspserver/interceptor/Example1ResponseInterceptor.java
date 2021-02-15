@@ -23,7 +23,7 @@ public class Example1ResponseInterceptor implements HandlerInterceptor {
             ModelAndView modelAndView) throws Exception {
 
         if (request.getRequestURI().contains("example1")) {
-            response.addHeader("Content-Security-Policy", "script-src 'none'");
+            response.addHeader("Content-Security-Policy", "script-src 'none';");
         }
 
     }
