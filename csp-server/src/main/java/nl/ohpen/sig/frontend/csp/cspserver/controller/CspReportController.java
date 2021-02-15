@@ -16,17 +16,20 @@ public class CspReportController {
 
     @PostMapping
     public CspViolationReport receiveCspViolationReport(@RequestBody CspViolationReport report) {
-        logger.info("==================================");
-        logger.info("document-uri: {}", report.getDocumentUri());
-        logger.info("referrer: {}", report.getReferrer());
-        logger.info("violated-directive: {}", report.getViolatedDirective());
-        logger.info("effective-directive: {}", report.getEffectiveDirective());
-        logger.info("original-policy: {}", report.getOriginalPolicy());
-        logger.info("disposition: {}", report.getDisposition());
-        logger.info("blocked-uri: {}", report.getBlockedUri());
-        logger.info("status-code: {}", report.getStatusCode());
-        logger.info("script-sample: {}", report.getScriptSample());
-
-        return report;
+		logCspReport(report);
+		return report;
     }
+
+	private synchronized void logCspReport(CspViolationReport report) {
+		logger.info("==================================");
+		logger.info("document-uri: {}", report.getDocumentUri());
+		logger.info("referrer: {}", report.getReferrer());
+		logger.info("violated-directive: {}", report.getViolatedDirective());
+		logger.info("effective-directive: {}", report.getEffectiveDirective());
+		logger.info("original-policy: {}", report.getOriginalPolicy());
+		logger.info("disposition: {}", report.getDisposition());
+		logger.info("blocked-uri: {}", report.getBlockedUri());
+		logger.info("status-code: {}", report.getStatusCode());
+		logger.info("script-sample: {}", report.getScriptSample());
+	}
 }

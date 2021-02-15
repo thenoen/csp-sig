@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -19,16 +20,19 @@ public class MvcConfig implements WebMvcConfigurer {
     private final CspResponseInterceptor productServiceInterceptor;
     private final Example1ResponseInterceptor example1ResponseInterceptor;
 
+    private final List<HandlerInterceptor> handlerInterceptors;
+
     public MvcConfig(CspResponseInterceptor productServiceInterceptor,
-					 Example1ResponseInterceptor example1ResponseInterceptor) {
+					 Example1ResponseInterceptor example1ResponseInterceptor,
+					 List<HandlerInterceptor> handlerInterceptors) {
         this.productServiceInterceptor = productServiceInterceptor;
 		this.example1ResponseInterceptor = example1ResponseInterceptor;
+		this.handlerInterceptors = handlerInterceptors;
 	}
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(productServiceInterceptor);
-        registry.addInterceptor(example1ResponseInterceptor);
+        handlerInterceptors.forEach(registry::addInterceptor);
     }
 
     @Override

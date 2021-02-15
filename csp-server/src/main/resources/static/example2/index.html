@@ -1,0 +1,34 @@
+<html>
+<head>
+
+	<title>Example 2</title>
+
+	<style>
+		div {
+			border: solid 4px lime;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+<h1>Example 2</h1>
+<div id="element1">
+	element 1
+</div>
+<div id="element2">
+	element 2
+</div>
+<div id="element3">
+	element 3
+</div>
+
+<script src="/example2/js/script1.js" ></script>
+<script src="/example2/js/script2.js" nonce="abc"></script>
+<script>
+	let e3 = document.getElementById('element3')
+	e3.innerHTML = e3.innerHTML + ' - was hacked'
+	e3.style.borderColor = 'red'
+</script>
+
+</body>
+</html>
