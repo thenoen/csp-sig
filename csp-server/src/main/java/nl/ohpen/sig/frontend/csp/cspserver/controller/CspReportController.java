@@ -14,8 +14,25 @@ public class CspReportController {
 
     private static final Logger logger = LoggerFactory.getLogger(CspReportController.class);
 
-    @PostMapping
-    public CspViolationReport receiveCspViolationReport(@RequestBody CspViolationReport report) {
+    @PostMapping("/report-uri")
+    public CspViolationReport receiveCspViolationReportReportUri(@RequestBody CspViolationReport report) {
+
+		logger.warn("Received CSP violation report to 'report-uri'");
+		logCspReport(report);
+		return report;
+    }
+
+
+    @PostMapping("/report-to-group-1")
+    public CspViolationReport receiveCspViolationReportToGroup1(@RequestBody CspViolationReport report) {
+		logger.info("Received CSP response for Group1");
+		logCspReport(report);
+		return report;
+    }
+
+    @PostMapping("/report-to-group-2")
+    public CspViolationReport receiveCspViolationReportToGroup2(@RequestBody CspViolationReport report) {
+		logger.info("Received CSP response for Group2");
 		logCspReport(report);
 		return report;
     }

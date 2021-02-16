@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Example 3</title>
+
+	<script src="/example3/js/script.js" nonce="allowed"></script>
+
+<!--	this meta tag will be ignored-->
+	<meta http-equiv="Content-Security-Policy-Report-Only" content="script-src 'none';">
+
+	<style>
+		div {
+			border: solid 4px lime;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+<h1>Example 3</h1>
+<div id="element1">
+	element 1
+</div>
+
+<script nonce="abc-uri">
+	hack('element1')
+</script>
+
+</body>
+</html>

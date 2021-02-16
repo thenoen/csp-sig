@@ -1,6 +1,6 @@
 package nl.ohpen.sig.frontend.csp.cspserver.config;
 
-import nl.ohpen.sig.frontend.csp.cspserver.interceptor.CspResponseInterceptor;
+import nl.ohpen.sig.frontend.csp.cspserver.interceptor.CspViolationReportOnlyInterceptor;
 import nl.ohpen.sig.frontend.csp.cspserver.interceptor.Example1ResponseInterceptor;
 
 import org.springframework.context.annotation.Configuration;
@@ -11,18 +11,18 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
-    private final CspResponseInterceptor productServiceInterceptor;
+    private final CspViolationReportOnlyInterceptor productServiceInterceptor;
     private final Example1ResponseInterceptor example1ResponseInterceptor;
 
     private final List<HandlerInterceptor> handlerInterceptors;
 
-    public MvcConfig(CspResponseInterceptor productServiceInterceptor,
+    public MvcConfig(CspViolationReportOnlyInterceptor productServiceInterceptor,
 					 Example1ResponseInterceptor example1ResponseInterceptor,
 					 List<HandlerInterceptor> handlerInterceptors) {
         this.productServiceInterceptor = productServiceInterceptor;
@@ -44,7 +44,7 @@ public class MvcConfig implements WebMvcConfigurer {
         return new MappingJackson2HttpMessageConverter() {
             @Override
             public List<MediaType> getSupportedMediaTypes() {
-                return Collections.singletonList(new MediaType("application", "csp-report"));
+                return Arrays.asList(new MediaType("application", "csp-report"), new MediaType("application", "reports+json"));
             }
         };
     }

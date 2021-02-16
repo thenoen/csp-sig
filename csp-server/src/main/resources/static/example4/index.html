@@ -1,0 +1,32 @@
+<html>
+<head>
+
+	<title>Example 4</title>
+
+	<script src="/example3/js/script.js" nonce="allowed" ></script>
+
+	<style>
+		div {
+			border: solid 4px lime;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+<h1>Example 4</h1>
+<div id="element1">
+	element 1
+</div>
+<div id="element2">
+	element 2
+</div>
+
+<script nonce="abc-to-g1">
+	hack("element2");
+</script>
+<script nonce="abc-to-g2">
+	hack("element2");
+</script>
+
+</body>
+</html>
