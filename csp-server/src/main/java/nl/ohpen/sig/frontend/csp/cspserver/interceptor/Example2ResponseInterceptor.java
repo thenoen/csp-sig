@@ -14,13 +14,13 @@ public class Example2ResponseInterceptor implements HandlerInterceptor {
 	public boolean preHandle(
 			HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		if (request.getRequestURI().contains("example2")) {
-//			response.addHeader("Content-Security-Policy","script-src 'sha256-7BqxfWa3J2m58DlEtHcXwrzw7nUpbPnMoZVDb2KHGW0='; report-uri /csp-report/"); //for src attribute - does not work
+//			response.addHeader("Content-Security-Policy","script-src 'sha256-7BqxfWa3J2m58DlEtHcXwrzw7nUpbPnMoZVDb2KHGW0=';"); //for src attribute - does not work
 
 
-//			response.addHeader("Content-Security-Policy","script-src 'sha256-34Ucx9oAc+cuTPFeeVBRMpwPSxnIJxAqP/iFk9mWEC8='; report-uri /csp-report/");//script3
-//			response.addHeader("Content-Security-Policy","script-src 'nonce-abc'; report-uri /csp-report/");
+			response.addHeader("Content-Security-Policy","script-src 'sha256-34Ucx9oAc+cuTPFeeVBRMpwPSxnIJxAqP/iFk9mWEC8=';");//script3
+			response.addHeader("Content-Security-Policy","script-src 'nonce-abc';");
 
-			response.addHeader("Content-Security-Policy","script-src sha256-34Ucx9oAc+cuTPFeeVBRMpwPSxnIJxAqP/iFk9mWEC8=' 'nonce-abc';");
+//			response.addHeader("Content-Security-Policy","script-src sha256-34Ucx9oAc+cuTPFeeVBRMpwPSxnIJxAqP/iFk9mWEC8= 'nonce-abc';");
 		}
 		return true;
 	}
