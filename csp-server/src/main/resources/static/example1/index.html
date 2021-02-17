@@ -2,6 +2,7 @@
 <head>
 	<meta http-equiv="Content-Security-Policy" content="script-src 'self';">
 
+	<!-- element 1-->
 	<script src="/example1/js/script1.js" type="application/javascript"></script>
 	<title>Example 1</title>
 
@@ -13,6 +14,7 @@
 	</style>
 
 	<script>
+		// element 3
 		function hack() {
 			let e = document.getElementById('element3')
 			e.innerHTML = e.innerHTML + ' - was hacked'
@@ -34,6 +36,7 @@
 
 
 <script>
+	// element 2
 	let e = document.getElementById('element2')
 	e.innerHTML = e.innerHTML + ' - was hacked'
 	e.style.borderColor = 'red'
